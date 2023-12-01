@@ -1,0 +1,569 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap');
+body {
+    margin: 0;
+    height: 100vh;
+}
+button { cursor: pointer; }
+
+
+.app {
+    width: 100%;
+    /* height: 100vh; */
+    box-sizing: border-box;
+    min-height: 100vh;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    background: linear-gradient(180deg, rgba(242, 218, 218, 0.63) 0%, rgba(233, 243, 191, 0.58) 16.67%, rgba(242, 192, 228, 0.55) 29.69%, rgba(235, 204, 220, 0.59) 48.96%, rgba(211, 242, 192, 0.54) 72.92%, rgba(242, 242, 242, 0.25) 100%);
+    background-size: 200% 200%;
+}
+
+.link {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+}
+
+.header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: -40px;
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.header > h1::before {
+    content: 'My Portfolio';
+    position: absolute;
+    background: linear-gradient(360deg, #80808025, #80808080);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* color: transparent; */
+    transform: translateY(2.8rem) rotateY(180deg) rotateZ(180deg);
+}
+.header > button {
+    position: fixed;
+    right: 0;
+    margin-right: 15px;
+}
+
+
+
+/* search-bar */
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.search-option {
+    padding: 5px 0;
+    align-self: center;
+}
+.input-bar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-bar > input {
+    padding: 10px 200px 10px 0;
+    background-color: transparent;
+    border-width:  0 0 1px;
+    border-color: #949494;
+    transition: .25s;
+}
+.input-bar:hover > input {
+    transform: scale(1.05);    
+}
+.input-bar:hover > .search-icon {
+    transform: scale(1.1);
+    transform: translateX(10px);
+}
+.input-bar > input:focus {
+    transform: scale(1.05);  
+    outline: none;
+    border-color: #B80B0B;
+}
+.input-bar > input:focus + .search-icon {
+    transform: translateX(10px);
+    color: #B80B0B;
+}
+.input-bar > .search-icon {
+    position: absolute;
+    right: 0;
+    color: #949494;
+    background-color: transparent;
+    transition: .25s;
+    cursor: pointer;
+}
+
+
+
+
+
+
+/* content */
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    overflow: scroll;
+}
+.content > div:first-child {
+    background-color: #fff;
+    padding:  0 5rem 10rem 5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 1600px;
+}
+.content > div:first-child .title {
+    align-self: center;
+}
+.content > div:first-child > div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+}
+.content > div:first-child div span {
+    flex: 2;
+    font-size: 16pt;
+}
+.content > div:first-child .big-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+}
+.content > div:first-child .big-input textarea {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    font-size: 14pt;
+}
+.content > div:first-child div input,
+.content > div:first-child form {
+    flex: 4;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content > div:first-child .image-upload{
+    align-self: center;
+    padding-left: 136px;
+}
+.content > div:first-child img {
+    height: 300%;
+}
+.content > div:first-child .button {
+    height: 48px;
+    font-size: 14pt;
+    border-radius: 15px;
+    border: none;
+}
+.content > div:first-child div input {
+    padding: 0 1rem;
+    font-size: 14pt;
+}
+.content > div:first-child .image-upload{
+    align-self: center;
+    padding-left: 136px;
+}
+.content > div:first-child .button {
+    height: 48px;
+    font-size: 14pt;
+    border-radius: 15px;
+    border: none;
+}
+.content > div:first-child .buttons {
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+}
+.content > div:first-child .buttons button {
+    flex: 1;
+}
+.content > span {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    overflow: scroll;
+}
+
+
+
+/* profile */
+.profile {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    align-self: center;
+
+    padding: 40px 30px;
+    border-radius: 15px;
+    
+    cursor: pointer;
+    border: none;
+    
+    transition: .75s;
+    width: 250px;
+    height: 367px;
+}
+.profile:hover {
+    transform: scale(1.05) translateY(-10px) rotateY(360deg);
+    box-shadow: 0px 40px 15px #00000025;
+}
+.profile:active {
+    transform: scale(1) translateY(0) rotateY(360deg);
+    transition: .25s;
+    box-shadow: 0px 4px 15px #00000025;
+}
+.profile > img {
+    border-radius: 50%;
+    box-shadow: 0px 4px 15px #00000025;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 100%;
+}
+.profile > .name {
+    font-size: 24pt;
+    font-weight: 700;
+}
+.profile > .info {
+    font-size: 12pt;
+}
+
+/* profile page */
+.profile-content {
+    background-color: #fff;
+    padding:  0 5rem 10rem 5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.profile-content .title {
+    align-self: center;
+}
+.profile-content > div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+}
+.profile-content div span {
+    flex: 2;
+    font-size: 16pt;
+}
+.profile-content div input,
+.profile-content form {
+    flex: 4;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-content .image-upload{
+    align-self: center;
+    padding-left: 136px;
+}
+.profile-content img {
+    height: 300%;
+}
+.profile-content .button {
+    height: 48px;
+    font-size: 14pt;
+    border-radius: 15px;
+    border: none;
+}
+.profile-content div input {
+    padding: 0 1rem;
+    font-size: 14pt;
+}
+
+
+
+/* portfolio */
+.portfolio-list {
+    display: grid;
+
+    grid-template-columns: repeat(1, 1fr);
+    gap: 50px;
+}
+@media (min-width: 760px) {
+    .portfolio-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1160px) {
+    .portfolio-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (min-width: 1600px) {
+    .portfolio-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    box-shadow: 0 2px 5px #00000025;
+    background-color: #fff;
+    border-radius: 15px;
+    
+    text-align: center;
+    border: none;
+    
+    width: 334px;
+    padding: 40px 10px;
+    cursor: pointer;
+    transition: .55s;
+}
+.portfolio:hover {
+    /* animation: portfolio-rotate 1s normal; */
+    transform: scale(1.05) translateY(-40px) rotateY(360deg);
+    box-shadow: 0 40px 15px #00000025;
+}
+.portfolio:active {
+    transition: .06s;
+    transform: scale(1) translateY(-35px) rotateY(360deg);
+    box-shadow: 0 4px 15px #00000025;
+}
+.portfolio > img {
+    width: 250px;
+    height: 284px;
+
+    align-self: center;
+    box-shadow: 0 4px 15px #00000025;
+    border-radius: 15px;
+}
+.portfolio > .title {
+    font-weight: bold;
+    font-size: 24pt;
+    margin-left: 1rem;
+}
+.portfolio > .portfolio-content {
+    font-size: 12pt;
+    margin-left: 0.5rem;
+}
+
+
+
+/* write */
+.write-content {
+    background-color: #fff;
+    padding:  0 5rem 10rem 5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 1600px;
+}
+.write-content .title {
+    align-self: center;
+}
+.write-content > div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+}
+.write-content .big-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+}
+.write-content .big-input textarea {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    font-size: 14pt;
+}
+.write-content div > span {
+    flex: 2;
+    font-size: 16pt;
+}
+.write-content div input,
+.write-content form {
+    flex: 4;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.write-content .image-upload{
+    align-self: center;
+    padding-left: 136px;
+}
+.write-content img {
+    height: 300%;
+}
+.write-content .button {
+    height: 48px;
+    font-size: 14pt;
+    border-radius: 15px;
+    border: none;
+}
+.write-content div input {
+    padding: 0 1rem;
+    font-size: 14pt;
+}
+.write-content .buttons {
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+}
+.write-content .buttons button {
+    flex: 1;
+}
+
+/* portfolio */
+.portfolio-content {
+    background-color: #fff;
+    padding:  0 5rem 10rem 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 1000px;
+}
+.portfolio-content .title {
+    align-self: center;
+}
+.portfolio-content > div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+}
+.portfolio-content .thumbnail {
+    width: 100%;
+    border-radius: 25px;
+    filter: blur(2px);
+    flex: 1;
+    justify-content: center;
+}
+.portfolio-content .thumbnail .thumbnail-image {
+    width: 100%;
+}
+.portfolio-content .content-header > span {
+    flex: 2;
+    font-size: 24pt;
+    font-weight: 600;
+}
+.portfolio-content .content-header button {
+    width: 10%;
+    height: 100%;
+    border-radius: 15px;
+    border: none;
+    font-size: 14pt;
+    margin-right: 20px;
+}
+.portfolio-content .article {
+    overflow: scroll;
+    height: 100%;
+}
+
+
+/* WriteButton */
+.write-button-container  {
+    position: sticky;
+    align-self: flex-end;
+    bottom: 56px;
+    right: 56px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.write-button {
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: .15s;
+}
+.write-button:hover {
+    transform: translateX(-6px) translateY(-6px);
+    box-shadow: 6px 6px 10px #00000050;
+}
+.write-button:active {
+    transform: translateX(0) translateY(0);
+    box-shadow: none;
+}
+
+
+
+/* footer */
+.footer {
+    width: 100%;
+    background-color: lightgrey;
+    color: grey;
+    font-size: 10pt;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer > div {
+    margin: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+/* components */
+.input {
+    display: flex;
+    gap: 30px;
+}
+
+.login-part {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
