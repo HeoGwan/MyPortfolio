@@ -12,7 +12,7 @@ export default function ProfileCard({navigate, user}) {
     return (
         <div className="profile" onClick={() => navigate('profile')}>
             <img src={user.profileImage} alt="프로필 사진" />
-            <div className="name">{user.name}</div>
+            <div className="name">{user.nickname}</div>
             <div className="info">{user.introduce}</div>
         </div>
     )

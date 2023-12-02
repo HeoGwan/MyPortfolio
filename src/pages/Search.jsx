@@ -1,25 +1,28 @@
 import {useState, useEffect} from 'react';
 
-export default function Search({searchWord, searchType, userData}) {
-    const [result, setResult] = useState([]);
+import SearchResult from '../components/SearchResult';
 
+export default function Search({navigate, searchType, userData, portfolios, results}) {
     useEffect(() => {
-        console.log(userData)
-        switch (searchType) {
-            case 'writer':
-                // 글쓴이 찾기
-                const writers = Object.keys(userData).filter((data) => data.includes(searchWord))
-                setResult(writers);
-                console.log('writers: ', result);
-            break;
-        }
-    }, [searchWord]);
+        console.log(results);
+    }, []);
 
     return (
         <div className='content'>
-            검색어: {searchWord} <br />
-            검색 종류: {searchType}
-
+            <pre></pre>
+            {
+                searchType === 'writer' ?
+                // 글쓴이 검색 시
+                results.map((result) => (
+                    portfolios.map((portfolio) => (
+                        result === portfolio.userId && <SearchResult navigate={navigate} userImage={userData[result].profileImage} userNickname={userData[result].nickname} portfolio={portfolio}/>
+                    ))
+                )) :
+                // 이외 검색 시
+                results.map((result) => (
+                    <SearchResult navigate={navigate} userImage={userData[result.userId].profileImage} userNickname={userData[result.userId].nickname} portfolio={result}/>
+                )) 
+            }
         </div>
     )
 }

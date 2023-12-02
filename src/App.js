@@ -1,5 +1,5 @@
 import {useState, useEffect, useRef} from 'react';
-import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
+import {Routes, Route, useNavigate, redirect, useLocation} from 'react-router-dom'
 import './style.css'
 
 // Default Components
@@ -20,10 +20,12 @@ import Login from './pages/Login'
 import Search from './pages/Search'
 
 // Complete
-// 포트폴리오 추가, 포트폴리오 확인
+// 포트폴리오 검색
+// 문제점: search 페이지에서 다시 검색 시 검색 결과가 안뜸
 
 // Todo
-// 프로필 간단 소개 파싱, 포트폴리오 검색
+// 포트폴리오 수정 및 삭제
+// 프로필 간단 소개 파싱
 
 const toJsonData = (data) => {
 	if (data === null || data === undefined) return null;
@@ -37,6 +39,7 @@ const toObjectData = (data) => {
 }
 
 function App() {
+	const location = useLocation();
 	const navigate = useNavigate();
 	const portfolioId = useRef(0);
 	
@@ -44,10 +47,15 @@ function App() {
 	const [userData, setUserData] = useState({});
 	const [user, setUser] = useState(null);
 	// const [user, setUser] = useState(1); // test code
+	
+	// 검색정보
 	// 검색어 정보
 	const [searchWord, setSearchWord] = useState('');
 	// 검색 종류 정보
 	const [searchType, setSearchType] = useState('');
+	// 검색 결과 정보
+	const [results, setResults] = useState([]);
+
 	// 포트폴리오 정보
 	const [portfolios, setPortfolios] = useState([]);
 
@@ -107,7 +115,7 @@ function App() {
 		console.log('id', id);
 		// console.log(`data: ${data[id].profileImage}, update: ${updateData.profileImage}`);
 		data[id].profileImage = updateData.profileImage;
-		data[id].name = updateData.name;
+		data[id].nickname = updateData.nickname;
 		data[id].id = updateData.id;
 		data[id].password = updateData.password;
 		data[id].introduce = updateData.introduce;
@@ -178,7 +186,7 @@ function App() {
 	return (
 		<div className='app'>
 			<Header navigate={navigate} user={user} logout={logout}/>
-			<SearchBar navigate={navigate} setSearchWord={setSearchWord} setSearchType={setSearchType}/>
+			<SearchBar navigate={navigate} setSearchType={setSearchType} setResults={setResults} userData={userData} portfolios={portfolios}/>
 			<Routes>
 				{/* user 정보가 있을 경우(로그인 한 경우) 프로필과 포트폴리오를 보여준다. */}
 				{ user ? 
@@ -191,7 +199,7 @@ function App() {
 				<Route path='portfolio-edit' element={<PortfolioEdit navigate={navigate}/>}/>
 				<Route path='register' element={<Register navigate={navigate} saveUser={saveUser}/>}/>
 				<Route path='login' element={<Login navigate={navigate} userData={userData} setUser={setUser}/>}/>
-				<Route path='search' element={<Search navigate={navigate} searchWord={searchWord} searchType={searchType} userData={userData}/>}/>
+				<Route path='search' element={<Search navigate={navigate} searchType={searchType} userData={userData} portfolios={portfolios} results={results}/>}/>
 			</Routes>
 			{ user && <WriteButton navigate={navigate} /> }
 			<Footer />

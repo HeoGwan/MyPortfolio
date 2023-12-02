@@ -26,7 +26,7 @@ export default function Portfolio({navigate, portfolios}) {
     return (
         <div className="content">
             <div className="portfolio-content">
-                <h1 className="title">내 포트폴리오</h1>
+                <h1 className="title">포트폴리오</h1>
                 {/* thumbnail image */}
                 <div className="thumbnail">
                     <img src={portfolio.portfolioImage} alt="대표 이미지" className="thumbnail-image"/>

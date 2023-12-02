@@ -6,12 +6,12 @@ import Button from '../components/Button'
 
 export default function Register({navigate, saveUser}) {
     const [selectImage, setSelectImage] = useState(null);
-    const [name, setName] = useState('');
+    const [nickname, setNickname] = useState('');
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [introduce, setIntroduce] = useState('');
 
-    const nameRef = useRef();
+    const nicknameRef = useRef();
     const idRef = useRef();
     const pwRef = useRef();
     const introduceRef = useRef();
@@ -21,13 +21,13 @@ export default function Register({navigate, saveUser}) {
         const userData = {
             profileImage: selectImage,
             id,
-            name, 
+            nickname, 
             password,
             introduce,
         }
         if (saveUser(id, userData)) {
             setSelectImage(null);
-            setName('');
+            setNickname('');
             setId('');
             setPassword('');
             setIntroduce('');
@@ -45,7 +45,7 @@ export default function Register({navigate, saveUser}) {
             <div>
                 <h1 className="title">회원가입</h1>
                 <ImageInput title='프로필 사진' setSelectImage={setSelectImage} image={selectImage}/>
-                <Input title='이름' valueRef={nameRef} value={name} setValue={setName}/>
+                <Input title='닉네임' valueRef={nicknameRef} value={nickname} setValue={setNickname}/>
                 <Input title='아이디' valueRef={idRef} value={id} setValue={setId}/>
                 <Input title='비밀번호' type='password' value={password} valueRef={pwRef} setValue={setPassword}/>
                 <Input title='간단 소개' value={introduce} valueRef={introduceRef} setValue={setIntroduce}/>

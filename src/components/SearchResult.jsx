@@ -1,24 +1,19 @@
-import ProfileCard from './ProfileCard';
+import React from "react"
 
-export default function SearchResult({navigate, result, type}) {
-
-
+export default function SearchResult({navigate, userImage, userNickname, portfolio}) {
     return (
-        <div className="search-result">
-            {
-                type === 'writer' ?
-                // 글쓴이 검색
-                <div className="writer-result">
-                    
-                </div> :
-                // 게시글 검색
-                <div className="portfolio-result">
-                    <div className="user-info">
-                        <img src="" alt="" />
-                        <div className="user-name"></div>
-                    </div>
+        <div className="search-result" onClick={() => navigate(`portfolio/${portfolio.id}`)}>
+            <div className="user-info">
+                <img src={userImage} alt="프로필 사진" />
+                <div className="user-name">{userNickname}</div>
+            </div>
+            <div className="portfolio-info">
+                <img src={portfolio.portfolioImage} alt="포트폴리오 이미지" />
+                <div>
+                    <div className="result-title">{portfolio.title}</div>
+                    <div className="result-content">{portfolio.content}</div>
                 </div>
-            }
+            </div>
         </div>
     )
 }

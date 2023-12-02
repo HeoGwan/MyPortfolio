@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 
 import Input from '../components/Input'
 import Button from '../components/Button'
@@ -8,6 +8,10 @@ export default function Login({navigate, userData, setUser}) {
     const [password, setPassword] = useState('');
     const idRef = useRef();
     const passwordRef = useRef();
+
+    useEffect(() => {
+        idRef.current.focus();
+    }, [])
 
     const login = () => {
         // 입력한 아이디를 찾은 뒤 비밀번호가 일치한지 판단 후
@@ -30,7 +34,7 @@ export default function Login({navigate, userData, setUser}) {
 
         // 로그인 성공
         data.id = id;
-        alert(`${data.name}님 환영합니다.`);
+        alert(`${data.nickname}님 환영합니다.`);
         setUser(data);
         console.log(data);
         navigate('/');
