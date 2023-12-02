@@ -36,12 +36,16 @@ export default function Login({navigate, userData, setUser}) {
         navigate('/');
     }
 
+    const onEnterLogin = (e) => {
+        login();
+    }
+
     return (
         <div className="content">
             <div>
                 <h1 className="title">로그인</h1>
-                <Input title='아이디' value={id} valueRef={idRef} setValue={setId}/>
-                <Input title='비밀번호' type='password' value={password} valueRef={passwordRef} setValue={setPassword}/>
+                <Input title='아이디' value={id} valueRef={idRef} setValue={setId} keyDownAction={onEnterLogin}/>
+                <Input title='비밀번호' type='password' value={password} valueRef={passwordRef} setValue={setPassword} keyDownAction={onEnterLogin}/>
                 <div className="buttons">
                     <Button buttonName='회원가입' navigate={navigate} path='register'/>
                     <Button buttonName='로그인' style={{backgroundColor: '#4985DF', color: 'white'}} action={login}/>

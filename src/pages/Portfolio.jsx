@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import {useParams} from 'react-router-dom';
 
-import ImageInput from '../components/ImageInput'
-import Input from '../components/Input'
-import BigInput from '../components/BigInput'
 import Button from '../components/Button'
 
-export default function Portfolio({navigate}) {
+export default function Portfolio({navigate, portfolios}) {
+    const {portfolioId} = useParams();
+    const [portfolio, setPortfolio] = useState({});
+
+    useEffect(() => {
+        console.log(portfolios)
+        console.log(portfolioId)
+        console.log(portfolios[portfolioId]);
+        setPortfolio(portfolios[portfolioId]);
+    }, [])
+
     const deletePortfolio = () => {
         const isDeletePortfolio = window.confirm('포트폴리오를 삭제하시겠습니까?')
 
@@ -21,10 +29,10 @@ export default function Portfolio({navigate}) {
                 <h1 className="title">내 포트폴리오</h1>
                 {/* thumbnail image */}
                 <div className="thumbnail">
-                    <img src="game_image2.png" alt="대표 이미지" className="thumbnail-image"/>
+                    <img src={portfolio.portfolioImage} alt="대표 이미지" className="thumbnail-image"/>
                 </div>
                 <div className="content-header">
-                    <span>제목</span>
+                    <span>{portfolio.title}</span>
                     <Button
                         buttonName="수정"
                         style={{backgroundColor: "#6593EC", color: "white"}}
@@ -39,7 +47,8 @@ export default function Portfolio({navigate}) {
                 </div>
 
                 <div className="article">
-                내용내용내용내용내용내용내용내용내용내용내용내내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용내용내용내
+                {/* 내용내용내용내용내용내용내용내용내용내용내용내내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내용내용내용내 */}
+                {portfolio.content}
                 </div>
             </div>
         </div>

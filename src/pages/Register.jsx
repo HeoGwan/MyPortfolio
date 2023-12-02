@@ -4,7 +4,7 @@ import ImageInput from '../components/ImageInput'
 import Input from '../components/Input'
 import Button from '../components/Button'
 
-export default function Register({navigate, SaveUser}) {
+export default function Register({navigate, saveUser}) {
     const [selectImage, setSelectImage] = useState(null);
     const [name, setName] = useState('');
     const [id, setId] = useState('');
@@ -20,11 +20,12 @@ export default function Register({navigate, SaveUser}) {
     const RegisterUser = () => {
         const userData = {
             profileImage: selectImage,
+            id,
             name, 
             password,
             introduce,
         }
-        if (SaveUser(id, userData)) {
+        if (saveUser(id, userData)) {
             setSelectImage(null);
             setName('');
             setId('');
@@ -53,6 +54,7 @@ export default function Register({navigate, SaveUser}) {
                     style={{backgroundColor: '#4985DF', color:'white'}}
                     action={RegisterUser}
                 />
+                <div>이미 계정이 있다면? <span style={{color: '#6593EC', marginLeft: '0.5rem', cursor: 'pointer'}} onClick={() => navigate('login')}>로그인</span></div>
             </div>
         </div>
     )

@@ -4,7 +4,7 @@ import ImageInput from '../components/ImageInput'
 import Input from '../components/Input'
 import Button from '../components/Button'
 
-export default function Profile({navigate, user, updateUser}) {
+export default function Profile({navigate, user, updateUser, deleteUser}) {
     const [selectImage, setSelectImage] = useState(user.profileImage);
     const [name, setName] = useState(user.name);
     const [id, setId] = useState(user.id);
@@ -50,6 +50,11 @@ export default function Profile({navigate, user, updateUser}) {
                         action={updateProfile}
                     />
                 </div>
+                <Button
+                    buttonName='회원 탈퇴'
+                    style={{backgroundColor: '#EE4646', color:'white'}}
+                    action={deleteUser}
+                />
             </div>
         </div>
     )
