@@ -20,11 +20,10 @@ import Login from './pages/Login'
 import Search from './pages/Search'
 
 // Complete
-// 포트폴리오 검색
-// 문제점: search 페이지에서 다시 검색 시 검색 결과가 안뜸
+// 포트폴리오 수정 및 삭제
 
 // Todo
-// 포트폴리오 수정 및 삭제
+// 포트폴리오 내용을 작성한 그대로 보이도록(이것도 아마 파싱)
 // 프로필 간단 소개 파싱
 
 const toJsonData = (data) => {
@@ -58,6 +57,7 @@ function App() {
 
 	// 포트폴리오 정보
 	const [portfolios, setPortfolios] = useState([]);
+	const [lookPortfolio, setLookPortfolio] = useState({});
 
 	useEffect(() => {
 		// 회원 정보 가져오기		
@@ -182,6 +182,40 @@ function App() {
 		return true;
 	}
 
+	const updatePortfolio = (updatePortfolioData) => {
+		const data = portfolios;
+		const id = updatePortfolioData.id;
+
+		if (data[id] === null || data[id] === undefined) {
+			alert(`존재하지 않는 포트폴리오입니다.`);
+			return;
+		}
+
+		data[id].portfolioImage = updatePortfolioData.portfolioImage;
+		data[id].title = updatePortfolioData.title;
+		data[id].content = updatePortfolioData.content;
+
+		setPortfolios(data);
+		setLookPortfolio(data[id]);
+		savePortfolioData();
+		alert(`수정되었습니다.`);
+		navigate(-1);
+	}
+
+	const deletePortfolio = (deletePortfolioId) => {
+		const data = portfolios;
+
+		const isDelete = window.confirm(`정말로 포트폴리오를 삭제하시겠습니까?`);
+
+		if (isDelete) {
+			delete data[deletePortfolioId];
+			setPortfolios(data);
+			savePortfolioData();
+			alert(`포트폴리오를 삭제하였습니다.`);
+			navigate('/');
+		}
+	}
+
 
 	return (
 		<div className='app'>
@@ -195,8 +229,8 @@ function App() {
 				}
 				<Route path='profile' element={<Profile navigate={navigate} user={user} updateUser={updateUser} deleteUser={deleteUser}/>}/>
 				<Route path='write' element={<Write navigate={navigate} user={user} savePortfolio={savePortfolio} portfolioId={portfolioId}/>}/>
-				<Route path='portfolio/:portfolioId' element={<Portfolio navigate={navigate} portfolios={portfolios}/>}/>
-				<Route path='portfolio-edit' element={<PortfolioEdit navigate={navigate}/>}/>
+				<Route path='portfolio/:portfolioId' element={<Portfolio navigate={navigate} user={user} portfolios={portfolios} deletePortfolio={deletePortfolio} setLookPortfolio={setLookPortfolio}/>}/>
+				<Route path='portfolio-edit' element={<PortfolioEdit navigate={navigate} portfolio={lookPortfolio} updatePortfolio={updatePortfolio}/>}/>
 				<Route path='register' element={<Register navigate={navigate} saveUser={saveUser}/>}/>
 				<Route path='login' element={<Login navigate={navigate} userData={userData} setUser={setUser}/>}/>
 				<Route path='search' element={<Search navigate={navigate} searchType={searchType} userData={userData} portfolios={portfolios} results={results}/>}/>

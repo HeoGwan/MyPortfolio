@@ -154,6 +154,9 @@ button { cursor: pointer; }
     height: 60px;
     align-items: center;
 }
+.content > div:first-child .input {
+    margin-top: 2rem;
+}
 .content > div:first-child div span {
     flex: 2;
     font-size: 16pt;

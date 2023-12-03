@@ -10,7 +10,7 @@ export default function PortfolioList({navigate, user, portfolios}) {
         <div className="portfolio-list">
             {
                 portfolios.map((portfolio) => {
-                    if (portfolio.userId === user.id) {
+                    if (portfolio && portfolio.userId === user.id) {
                         return <PortfolioCard key={portfolio.id} navigate={navigate} portfolio={portfolio}></PortfolioCard>
                     }
                 })

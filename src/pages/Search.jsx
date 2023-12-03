@@ -14,13 +14,14 @@ export default function Search({navigate, searchType, userData, portfolios, resu
                 searchType === 'writer' ?
                 // 글쓴이 검색 시
                 results.map((result) => (
+                    result && 
                     portfolios.map((portfolio) => (
-                        result === portfolio.userId && <SearchResult navigate={navigate} userImage={userData[result].profileImage} userNickname={userData[result].nickname} portfolio={portfolio}/>
+                        portfolio && result === portfolio.userId && <SearchResult navigate={navigate} userImage={userData[result].profileImage} userNickname={userData[result].nickname} portfolio={portfolio}/>
                     ))
                 )) :
                 // 이외 검색 시
                 results.map((result) => (
-                    <SearchResult navigate={navigate} userImage={userData[result.userId].profileImage} userNickname={userData[result.userId].nickname} portfolio={result}/>
+                    result && <SearchResult navigate={navigate} userImage={userData[result.userId].profileImage} userNickname={userData[result.userId].nickname} portfolio={result}/>
                 )) 
             }
         </div>

@@ -3,7 +3,7 @@ import {FaSearch} from 'react-icons/fa';
 
 export default function SearchBar({navigate, setSearchType, setResults, userData, portfolios}) {
     const [word, setWord] = useState('');
-    const [type, setType] = useState('');
+    const [type, setType] = useState('title');
     const inputRef = useRef();
     const typeRef = useRef();
 
@@ -22,11 +22,11 @@ export default function SearchBar({navigate, setSearchType, setResults, userData
                 setResults(writers);
             break;
             case 'title':
-                const titles = portfolios.filter((portfolio) => portfolio.title.includes(word));
+                const titles = portfolios.filter((portfolio) => portfolio != null && portfolio.title.includes(word));
                 setResults(titles);
                 break;
             case 'content':
-                const contents = portfolios.filter((portfolio) => portfolio.content.includes(word));
+                const contents = portfolios.filter((portfolio) => portfolio != null && portfolio.content.includes(word));
                 setResults(contents);
                 break;
         }
