@@ -23,7 +23,7 @@ export default function ImageInput({title, image, setSelectImage}) {
                     <input type="file" accept="image/*" onChange={changeImage}/>
                 </form>
             </div>
-            <img src={image} alt="프로필 사진" />
+            {image && <img src={image} alt="프로필 사진" />}
         </div>
     )
 }

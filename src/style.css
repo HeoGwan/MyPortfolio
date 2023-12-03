@@ -476,12 +476,13 @@ button { cursor: pointer; }
 /* portfolio */
 .portfolio-content {
     background-color: #fff;
-    padding:  0 5rem 10rem 0;
+    padding:  0 0 10rem 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 50px;
     max-width: 1000px;
+    line-height: 2rem;
 }
 .portfolio-content .title {
     align-self: center;
@@ -496,7 +497,7 @@ button { cursor: pointer; }
 .portfolio-content .thumbnail {
     width: 100%;
     border-radius: 25px;
-    filter: blur(2px);
+    filter: blur(1px);
     flex: 1;
     justify-content: center;
 }
@@ -519,6 +520,9 @@ button { cursor: pointer; }
 .portfolio-content .article {
     overflow: scroll;
     height: 100%;
+    font-size: 12pt;
+    font-weight: lighter;
+    line-height: 1.5rem;
 }
 
 

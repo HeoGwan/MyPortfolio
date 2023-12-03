@@ -19,7 +19,7 @@ export default function Register({navigate, saveUser}) {
     // 가입하기 클릭 시
     const RegisterUser = () => {
         const userData = {
-            profileImage: selectImage,
+            profileImage: selectImage ? selectImage : 'no_profile.png',
             id,
             nickname, 
             password,

@@ -32,7 +32,7 @@ export default function Write({navigate, user, savePortfolio, portfolioId}) {
         const portfolioData = {
             userId: user.id,
             id: portfolioId.current,
-            portfolioImage: selectImage,
+            portfolioImage: selectImage ? selectImage : 'no_thumbnail.png',
             title,
             content,
         }
@@ -52,12 +52,20 @@ export default function Write({navigate, user, savePortfolio, portfolioId}) {
         <div className="content">
             <div className="write-content">
                 <h1 className="title">포트폴리오 작성</h1>
-                <ImageInput title='대표 이미지' imageKey={'thumbnail'} setSelectImage={setSelectImage} image={selectImage}/>
+                <ImageInput title='대표 이미지' setSelectImage={setSelectImage} image={selectImage}/>
                 <Input title='제목' value={title} setValue={setTitle} valueRef={titleRef}/>
                 <BigInput title='내용' value={content} setValue={setContent} valueRef={contentRef}/>
                 <div className="buttons">
-                    <Button buttonName="취소" style={{backgroundColor: "#F1F1F1", color: "black"}} action={() => navigate(-1)}/>
-                    <Button buttonName="작성" style={{backgroundColor: "#6593EC", color: "white"}} action={portfolioSubmit}/>
+                    <Button
+                        buttonName="취소"
+                        style={{backgroundColor: "#F1F1F1", color: "black"}}
+                        action={() => navigate(-1)}
+                    />
+                    <Button
+                        buttonName="작성"
+                        style={{backgroundColor: "#6593EC", color: "white"}}
+                        action={portfolioSubmit}
+                    />
                 </div>
             </div>
         </div>

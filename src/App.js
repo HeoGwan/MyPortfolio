@@ -19,12 +19,6 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Search from './pages/Search'
 
-// Complete
-// 포트폴리오 수정 및 삭제
-
-// Todo
-// 포트폴리오 내용을 작성한 그대로 보이도록(이것도 아마 파싱)
-// 프로필 간단 소개 파싱
 
 const toJsonData = (data) => {
 	if (data === null || data === undefined) return null;
@@ -131,6 +125,8 @@ function App() {
 		setUserData(data);
 		setUser(data[updateData.id]);
 		localStorage.setItem('userData', toJsonData(data));
+		alert(`수정되었습니다.`);
+		navigate('/')
 		return true;
 	}
 
@@ -229,7 +225,7 @@ function App() {
 				}
 				<Route path='profile' element={<Profile navigate={navigate} user={user} updateUser={updateUser} deleteUser={deleteUser}/>}/>
 				<Route path='write' element={<Write navigate={navigate} user={user} savePortfolio={savePortfolio} portfolioId={portfolioId}/>}/>
-				<Route path='portfolio/:portfolioId' element={<Portfolio navigate={navigate} user={user} portfolios={portfolios} deletePortfolio={deletePortfolio} setLookPortfolio={setLookPortfolio}/>}/>
+				<Route path='portfolio/:portfolioId' element={<Portfolio navigate={navigate} user={user} deletePortfolio={deletePortfolio} setLookPortfolio={setLookPortfolio}/>}/>
 				<Route path='portfolio-edit' element={<PortfolioEdit navigate={navigate} portfolio={lookPortfolio} updatePortfolio={updatePortfolio}/>}/>
 				<Route path='register' element={<Register navigate={navigate} saveUser={saveUser}/>}/>
 				<Route path='login' element={<Login navigate={navigate} userData={userData} setUser={setUser}/>}/>

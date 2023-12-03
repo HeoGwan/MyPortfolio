@@ -24,8 +24,6 @@ export default function Profile({navigate, user, updateUser, deleteUser}) {
             idRef.current.focus();
             return;
         }
-        // localStorage.setItem('profile', selectImage)
-        navigate('/')
     }
 
     return (

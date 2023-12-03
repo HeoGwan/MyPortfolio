@@ -21,7 +21,8 @@ export default function PortfolioEdit({navigate, portfolio, updatePortfolio}) {
                 <Input title='제목' value={title} valueRef={titleRef} setValue={setTitle}/>
                 <BigInput title='내용' value={content} valueRef={contentRef} setValue={setContent}/>
                 <div className="buttons">
-                    <Button buttonName="취소"
+                    <Button
+                        buttonName="취소"
                         style={{backgroundColor: "#F1F1F1", color: "black"}}
                         action={() => navigate(-1)}
                     />
