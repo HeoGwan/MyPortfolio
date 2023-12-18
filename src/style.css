@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap');
+
 body {
     margin: 0;
     height: 100vh;
 }
-button { cursor: pointer; }
+
+button {
+    cursor: pointer;
+}
 
 
 .app {
@@ -44,7 +48,7 @@ button { cursor: pointer; }
     z-index: 2;
 }
 
-.header > h1::before {
+.header>h1::before {
     content: 'My Portfolio';
     position: absolute;
     background: linear-gradient(360deg, #80808025, #80808080);
@@ -53,7 +57,8 @@ button { cursor: pointer; }
     /* color: transparent; */
     transform: translateY(2.8rem) rotateY(180deg) rotateZ(180deg);
 }
-.header > button {
+
+.header>button {
     position: fixed;
     right: 0;
     margin-right: 15px;
@@ -69,40 +74,48 @@ button { cursor: pointer; }
     justify-content: center;
     align-items: center;
 }
+
 .search-option {
     padding: 5px;
     align-self: center;
 }
+
 .input-bar {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.input-bar > input {
+
+.input-bar>input {
     padding: 10px 200px 10px 0;
     background-color: transparent;
-    border-width:  0 0 1px;
+    border-width: 0 0 1px;
     border-color: #949494;
     transition: .25s;
 }
-.input-bar:hover > input {
-    transform: scale(1.05);    
+
+.input-bar:hover>input {
+    transform: scale(1.05);
 }
-.input-bar:hover > .search-icon {
+
+.input-bar:hover>.search-icon {
     transform: scale(1.1);
     transform: translateX(10px);
 }
-.input-bar > input:focus {
-    transform: scale(1.05);  
+
+.input-bar>input:focus {
+    transform: scale(1.05);
     outline: none;
     border-color: #B80B0B;
 }
-.input-bar > input:focus + .search-icon {
+
+.input-bar>input:focus+.search-icon {
     transform: translateX(10px);
     color: #B80B0B;
 }
-.input-bar > .search-icon {
+
+.input-bar>.search-icon {
     position: absolute;
     right: 0;
     color: #949494;
@@ -122,46 +135,75 @@ button { cursor: pointer; }
     display: flex;
     flex-direction: column;
     gap: 70px;
-    overflow: scroll;
+    -ms-overflow-style: none;
+    /* 인터넷 익스플로러 */
+    scrollbar-width: none;
+    /* 파이어폭스 */
 }
-.content > div:first-child {
+
+.content::-webkit-scrollbar {
+    display: none;
+    /* 크롬, 사파리, 오페라, 엣지 */
+}
+
+.content>div:first-child {
     background-color: #fff;
-    padding:  0 5rem 10rem 5rem;
-    overflow: hidden;
+    padding: 0 5rem 10rem 5rem;
+    -ms-overflow-style: none;
+    /* 인터넷 익스플로러 */
+    scrollbar-width: none;
+    /* 파이어폭스 */
     display: flex;
     flex-direction: column;
     gap: 50px;
     max-width: 1600px;
     width: 400px;
 }
+
+.content>div:first-child::-webkit-scrollbar {
+    display: none;
+    /* 크롬, 사파리, 오페라, 엣지 */
+}
+
 @media (min-width: 900px) {
-    .content > div:first-child {
+    .content>div:first-child {
         min-width: 760px;
     }
 }
+
 @media (min-width: 1200px) {
-    .content > div:first-child {
+    .content>div:first-child {
         min-width: 1000px;
     }
 }
-.content > div:first-child .title {
+
+.content>div:first-child .title {
     align-self: center;
 }
-.content > div:first-child > div {
+
+.content>div:first-child>div {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 60px;
+    height: 100%;
     align-items: center;
+    overflow-wrap: anywhere;
+    -ms-overflow-style: none;
+    /* 인터넷 익스플로러 */
+    scrollbar-width: none;
+    /* 파이어폭스 */
 }
-.content > div:first-child .input {
+
+.content>div:first-child .input {
     margin-top: 2rem;
 }
-.content > div:first-child div span {
+
+.content>div:first-child div span {
     flex: 2;
     font-size: 16pt;
 }
-.content > div:first-child .big-input {
+
+.content>div:first-child .big-input {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -169,68 +211,89 @@ button { cursor: pointer; }
     gap: 10px;
     flex: 1;
 }
-.content > div:first-child .big-input textarea {
+
+.content>div:first-child .big-input textarea {
     width: 100%;
     height: 100%;
     padding: 10px;
     font-size: 12pt;
     line-height: 20px;
 }
-.content > div:first-child div input,
-.content > div:first-child form {
+
+.content>div:first-child div input,
+.content>div:first-child form {
     flex: 4;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.content > div:first-child .image-upload{
+
+.content>div:first-child .image-upload {
     align-self: center;
     padding-left: 136px;
 }
-.content > div:first-child img {
+
+.content>div:first-child img {
+    width: 30%;
     height: 300%;
 }
-.content > div:first-child .button {
+
+.content>div:first-child .button {
     width: 80px;
     height: 48px;
     font-size: 14pt;
     border-radius: 15px;
     border: none;
 }
+
 @media (min-width: 900px) {
-    .content > div:first-child .button {
+    .content>div:first-child .button {
         width: 96px;
     }
 }
-.content > div:first-child div input {
-    padding: 0 1rem;
+
+.content>div:first-child div input {
+    padding: 1rem;
     font-size: 14pt;
 }
-.content > div:first-child .image-upload{
+
+.content>div:first-child .image-upload {
     align-self: center;
     padding-left: 136px;
 }
-.content > div:first-child .button {
+
+.content>div:first-child .button {
     height: 48px;
     font-size: 14pt;
     border-radius: 15px;
     border: none;
 }
-.content > div:first-child .buttons {
+
+.content>div:first-child .buttons {
     align-items: center;
     justify-content: flex-end;
     gap: 2rem;
 }
-.content > div:first-child .buttons button {
+
+.content>div:first-child .buttons button {
     flex: 1;
 }
-.content > span {
+
+.content>span {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 70px;
-    overflow: scroll;
+    -ms-overflow-style: none;
+    /* 인터넷 익스플로러 */
+    scrollbar-width: none;
+    /* 파이어폭스 */
+}
+
+.content>span::-webkit-scrollbar {
+    display: none;
+    /* 크롬, 사파리, 오페라, 엣지 */
 }
 
 
@@ -247,61 +310,78 @@ button { cursor: pointer; }
 
     padding: 40px 30px;
     border-radius: 15px;
-    
+
     cursor: pointer;
     border: none;
-    
+
     transition: .75s;
     width: 250px;
     height: 367px;
 }
+
 .profile:hover {
     transform: scale(1.05) translateY(-10px) rotateY(360deg);
     box-shadow: 0px 40px 15px #00000025;
 }
+
 .profile:active {
     transform: scale(1) translateY(0) rotateY(360deg);
     transition: .25s;
     box-shadow: 0px 4px 15px #00000025;
 }
-.profile > img {
+
+.profile>img {
     border-radius: 50%;
     box-shadow: 0px 4px 15px #00000025;
     margin-bottom: 30px;
     width: 100%;
     height: 100%;
 }
-.profile > .name {
+
+.profile>.name {
     font-size: 24pt;
     font-weight: 700;
 }
-.profile > .info {
+
+.profile>.info {
     font-size: 12pt;
 }
 
 /* profile page */
 .profile-content {
     background-color: #fff;
-    padding:  0 5rem 10rem 5rem;
-    overflow: hidden;
+    padding: 0 5rem 10rem 5rem;
+    -ms-overflow-style: none;
+    /* 인터넷 익스플로러 */
+    scrollbar-width: none;
+    /* 파이어폭스 */
     display: flex;
     flex-direction: column;
     gap: 50px;
 }
+
+.profile-content::-webkit-scrollbar {
+    display: none;
+    /* 크롬, 사파리, 오페라, 엣지 */
+}
+
 .profile-content .title {
     align-self: center;
 }
-.profile-content > div {
+
+.profile-content>div {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 60px;
     align-items: center;
 }
+
 .profile-content div span {
     flex: 2;
     font-size: 16pt;
 }
+
 .profile-content div input,
 .profile-content form {
     flex: 4;
@@ -310,19 +390,23 @@ button { cursor: pointer; }
     justify-content: center;
     align-items: center;
 }
-.profile-content .image-upload{
+
+.profile-content .image-upload {
     align-self: center;
     padding-left: 136px;
 }
+
 .profile-content img {
     height: 300%;
 }
+
 .profile-content .button {
     height: 48px;
     font-size: 14pt;
     border-radius: 15px;
     border: none;
 }
+
 .profile-content div input {
     padding: 0 1rem;
     font-size: 14pt;
@@ -337,16 +421,19 @@ button { cursor: pointer; }
     grid-template-columns: repeat(1, 1fr);
     gap: 50px;
 }
+
 @media (min-width: 760px) {
     .portfolio-list {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 @media (min-width: 1160px) {
     .portfolio-list {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
 @media (min-width: 1600px) {
     .portfolio-list {
         grid-template-columns: repeat(4, 1fr);
@@ -361,26 +448,29 @@ button { cursor: pointer; }
     box-shadow: 0 2px 5px #00000025;
     background-color: #fff;
     border-radius: 15px;
-    
+
     text-align: center;
     border: none;
-    
+
     width: 334px;
     padding: 40px 10px;
     cursor: pointer;
     transition: .55s;
 }
+
 .portfolio:hover {
     /* animation: portfolio-rotate 1s normal; */
     transform: scale(1.05) translateY(-40px) rotateY(360deg);
     box-shadow: 0 40px 15px #00000025;
 }
+
 .portfolio:active {
     transition: .06s;
     transform: scale(1) translateY(-35px) rotateY(360deg);
     box-shadow: 0 4px 15px #00000025;
 }
-.portfolio > img {
+
+.portfolio>img {
     width: 250px;
     height: 284px;
 
@@ -388,14 +478,18 @@ button { cursor: pointer; }
     box-shadow: 0 4px 15px #00000025;
     border-radius: 15px;
 }
-.portfolio > .title {
+
+.portfolio>.title {
     font-weight: bold;
     font-size: 24pt;
     margin-left: 1rem;
 }
-.portfolio > .portfolio-content {
+
+.portfolio>.portfolio-content {
     font-size: 12pt;
     margin-left: 0.5rem;
+    width: 100%;
+    overflow: hidden;
 }
 
 
@@ -403,23 +497,34 @@ button { cursor: pointer; }
 /* write */
 .write-content {
     background-color: #fff;
-    padding:  0 5rem 10rem 5rem;
-    overflow: hidden;
+    padding: 0 5rem 10rem 5rem;
+    -ms-overflow-style: none;
+    /* 인터넷 익스플로러 */
+    scrollbar-width: none;
+    /* 파이어폭스 */
     display: flex;
     flex-direction: column;
     gap: 50px;
     max-width: 1600px;
 }
+
+.write-content::-webkit-scrollbar {
+    display: none;
+    /* 크롬, 사파리, 오페라, 엣지 */
+}
+
 .write-content .title {
     align-self: center;
 }
-.write-content > div {
+
+.write-content>div {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 60px;
     align-items: center;
 }
+
 .write-content .big-input {
     display: flex;
     flex-direction: column;
@@ -428,6 +533,7 @@ button { cursor: pointer; }
     gap: 10px;
     flex: 1;
 }
+
 .write-content .big-input textarea {
     width: 100%;
     height: 100%;
@@ -435,10 +541,12 @@ button { cursor: pointer; }
     font-size: 12pt;
     line-height: 20px;
 }
-.write-content div > span {
+
+.write-content div>span {
     flex: 2;
     font-size: 16pt;
 }
+
 .write-content div input,
 .write-content form {
     flex: 4;
@@ -447,28 +555,34 @@ button { cursor: pointer; }
     justify-content: center;
     align-items: center;
 }
-.write-content .image-upload{
+
+.write-content .image-upload {
     align-self: center;
     padding-left: 136px;
 }
+
 .write-content img {
     height: 300%;
 }
+
 .write-content .button {
     height: 48px;
     font-size: 14pt;
     border-radius: 15px;
     border: none;
 }
+
 .write-content div input {
     padding: 0 1rem;
     font-size: 14pt;
 }
+
 .write-content .buttons {
     align-items: center;
     justify-content: flex-end;
     gap: 2rem;
 }
+
 .write-content .buttons button {
     flex: 1;
 }
@@ -476,24 +590,35 @@ button { cursor: pointer; }
 /* portfolio */
 .portfolio-content {
     background-color: #fff;
-    padding:  0 0 10rem 0;
-    overflow: hidden;
+    padding: 0 0 10rem 0;
+    -ms-overflow-style: none;
+    /* 인터넷 익스플로러 */
+    scrollbar-width: none;
+    /* 파이어폭스 */
     display: flex;
     flex-direction: column;
     gap: 50px;
     max-width: 1000px;
     line-height: 2rem;
 }
+
+.portfolio-content::-webkit-scrollbar {
+    display: none;
+    /* 크롬, 사파리, 오페라, 엣지 */
+}
+
 .portfolio-content .title {
     align-self: center;
 }
-.portfolio-content > div {
+
+.portfolio-content>div {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 60px;
     align-items: center;
 }
+
 .portfolio-content .thumbnail {
     width: 100%;
     border-radius: 25px;
@@ -501,14 +626,17 @@ button { cursor: pointer; }
     flex: 1;
     justify-content: center;
 }
+
 .portfolio-content .thumbnail .thumbnail-image {
     width: 60%;
 }
-.portfolio-content .content-header > span {
+
+.portfolio-content .content-header>span {
     flex: 2;
     font-size: 24pt;
     font-weight: 600;
 }
+
 .portfolio-content .content-header button {
     width: 10%;
     height: 100%;
@@ -517,17 +645,25 @@ button { cursor: pointer; }
     font-size: 14pt;
     margin-right: 20px;
 }
+
 .portfolio-content .article {
-    overflow: scroll;
+    -ms-overflow-style: none;
+    /* 인터넷 익스플로러 */
+    scrollbar-width: none;
+    /* 파이어폭스 */
     height: 100%;
     font-size: 12pt;
     font-weight: lighter;
     line-height: 1.5rem;
 }
 
+.portfolio-content .article::-webkit-scrollbar {
+    display: none;
+}
+
 
 /* WriteButton */
-.write-button-container  {
+.write-button-container {
     position: sticky;
     align-self: flex-end;
     bottom: 56px;
@@ -539,6 +675,7 @@ button { cursor: pointer; }
     align-items: center;
     gap: 30px;
 }
+
 .write-button {
     width: 80px;
     height: 80px;
@@ -548,10 +685,12 @@ button { cursor: pointer; }
     cursor: pointer;
     transition: .15s;
 }
+
 .write-button:hover {
     transform: translateX(-6px) translateY(-6px);
     box-shadow: 6px 6px 10px #00000050;
 }
+
 .write-button:active {
     transform: translateX(0) translateY(0);
     box-shadow: none;
@@ -568,29 +707,41 @@ button { cursor: pointer; }
     width: 600px;
     cursor: pointer;
     transition: .25s;
-    overflow: scroll;
+    -ms-overflow-style: none;
+    /* 인터넷 익스플로러 */
+    scrollbar-width: none;
+    /* 파이어폭스 */
 }
+
+.search-result::-webkit-scrollbar {
+    display: none;
+}
+
 .search-result:hover {
     transform: translateY(-15px);
     box-shadow: 0px 20px 15px #00000025;
 }
+
 .search-result:active {
     transform: translateY(0);
     box-shadow: none;
 }
+
 @media (min-width: 1100px) {
     .search-result {
         width: 1000px;
     }
 }
-.search-result > .user-info{
+
+.search-result>.user-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex: 1;
 }
-.search-result > .portfolio-info {
+
+.search-result>.portfolio-info {
     display: flex;
     flex-direction: row;
     align-self: center;
@@ -598,26 +749,32 @@ button { cursor: pointer; }
     margin-left: 2rem;
     line-height: 2rem;
 }
-.search-result > .portfolio-info > img {
+
+.search-result>.portfolio-info>img {
     width: 30%;
 }
-.search-result > .portfolio-info > div {
+
+.search-result>.portfolio-info>div {
     align-self: center;
     margin-left: 2rem;
 }
-.search-result > .portfolio-info .result-title {
+
+.search-result>.portfolio-info .result-title {
     font-size: 16pt;
     font-weight: bold;
 }
-.search-result > .portfolio-info .result-content {
+
+.search-result>.portfolio-info .result-content {
     margin-left: 2rem;
     font-size: 10pt;
     font-weight: lighter;
 }
+
 .search-result .user-info {
     gap: 10px;
 }
-.search-result .user-info > img {
+
+.search-result .user-info>img {
     width: 100%;
     border-radius: 50%;
 }
@@ -632,7 +789,7 @@ button { cursor: pointer; }
     margin-top: 1rem;
 }
 
-.footer > div {
+.footer>div {
     margin: 4px;
 }
 

@@ -11,7 +11,11 @@ export default function SearchResult({navigate, userImage, userNickname, portfol
                 <img src={portfolio.portfolioImage} alt="포트폴리오 이미지" />
                 <div>
                     <div className="result-title">{portfolio.title}</div>
-                    <div className="result-content">{portfolio.content}</div>
+                    <div className="result-content">{
+                        portfolio.content.length > 60 ?
+                        portfolio.content.substring(0, 60) + '...' :
+                        portfolio.content
+                    }</div>
                 </div>
             </div>
         </div>
